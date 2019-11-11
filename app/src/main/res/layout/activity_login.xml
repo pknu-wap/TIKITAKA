@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:text="티키타카"
+        android:textSize="60dp"
+        android:textColor="#10A8C8"
+        android:fontFamily="@font/bm"
+        android:gravity="center">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="5">
+
+    <EditText
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="아이디"
+        android:fontFamily="@font/bm">
+
+    </EditText>
+
+    <EditText
+    android:layout_width="330dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:hint="비밀번호"
+    android:fontFamily="@font/bm"
+    android:layout_marginTop="9dp"
+        android:password="true">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="로그인"
+        android:textSize="20dp"
+        android:fontFamily="@font/bm"
+        android:textColor="#FFFFFF"
+        android:background="#10a8c8">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="티키타카가 처음이신가요?"
+        android:textSize="15dp"
+        android:textColor="#555555"
+        android:gravity="center"
+        android:fontFamily="@font/bm">
+
+    </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
