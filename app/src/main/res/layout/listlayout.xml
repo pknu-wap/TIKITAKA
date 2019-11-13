@@ -16,26 +16,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:layout_margin="1dp"
                 android:id="@+id/list_TextView_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Title"
-                android:paddingLeft="10dp"
-                android:textSize="30sp"/>
+                android:fontFamily="@font/bm"
+                android:paddingLeft="15dp"
+                android:textSize="25sp"
+                />
             <TextView
+                android:layout_margin="1dp"
+                android:fontFamily="@font/bm"
                 android:id="@+id/list_TextView_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="yyyy-MM-dd"
                 android:textSize="15sp"
-                android:paddingLeft="10dp"/>
+                android:paddingLeft="15dp"/>
             <TextView
+                android:layout_margin="1dp"
+                android:fontFamily="@font/bm"
                 android:id="@+id/list_TextView_writer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="writer"
                 android:textSize="15sp"
-                android:paddingLeft="10dp"/>
+                android:paddingLeft="15dp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -2,13 +2,28 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.95">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/button_write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="글쓰기"
+        android:fontFamily="@font/bm"
+        android:background="@drawable/btn_background_blue"
+        android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:layout_weight="0.05"/>
+
 
 </LinearLayout>
