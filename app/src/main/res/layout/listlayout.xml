@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/my_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="5dp">
+        <LinearLayout
+            android:id="@+id/list_Linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/list_TextView_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:paddingLeft="10dp"
+                android:textSize="30sp"/>
+            <TextView
+                android:id="@+id/list_TextView_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="yyyy-MM-dd"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:id="@+id/list_TextView_writer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="writer"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
