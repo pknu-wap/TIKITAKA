@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.tikitaka.R;
+import android.view.View;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.my_recycler_view);
         // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        // in Content_in_list do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
@@ -43,7 +43,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new MyAdapter(myDataset, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int list_position=(int)v.getTag();
+                Intent intent= new Intent(MainActivity.this, Content_in_list.class);
+                intent.putExtra("title",title[list_position]);
+                intent.putExtra("date",date[list_position]);
+                intent.putExtra("writer",writer[list_position]);
+
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
 
 

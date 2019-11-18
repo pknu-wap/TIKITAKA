@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
+
         android:id="@+id/my_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,6 +13,8 @@
         android:layout_margin="5dp">
         <LinearLayout
             android:id="@+id/list_Linear"
+            android:clickable="true"
+            android:background="@drawable/list_press_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

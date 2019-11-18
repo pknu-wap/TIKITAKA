@@ -57,7 +57,7 @@
         android:textSize="20dp"
         android:fontFamily="@font/bm"
         android:textColor="#FFFFFF"
-        android:background="#10a8c8">
+        android:background="@drawable/btn_background_blue">
 
     </Button>
 

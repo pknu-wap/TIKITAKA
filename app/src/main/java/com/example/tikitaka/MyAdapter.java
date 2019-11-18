@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList<recyclerData> mDataset;
+    private static View.OnClickListener list_onClickListener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -20,19 +21,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public TextView textView_title;
         public TextView textView_date;
         public TextView textView_writer;
+        public View list_Linear;
 
         public MyViewHolder(View v) {
             super(v);
             textView_title = (TextView)v.findViewById(R.id.list_TextView_title);
             textView_date = (TextView)v.findViewById(R.id.list_TextView_date);
             textView_writer = (TextView)v.findViewById(R.id.list_TextView_writer);
+            list_Linear=v.findViewById(R.id.list_Linear);
+
+            list_Linear.setClickable(true);
+            list_Linear.setEnabled(true);
+            list_Linear.setOnClickListener(list_onClickListener);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<recyclerData> myDataset) {
+    public MyAdapter(ArrayList<recyclerData> myDataset, View.OnClickListener list_OnClick) {
 
         mDataset = myDataset;
+        list_onClickListener=list_OnClick;
     }
 
     // Create new views (invoked by the layout manager)
@@ -55,6 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.textView_title.setText(mDataset.get(position).title);
         holder.textView_date.setText(mDataset.get(position).date);
         holder.textView_writer.setText(mDataset.get(position).writer);
+        holder.list_Linear.setTag(position);
 
     }
 
