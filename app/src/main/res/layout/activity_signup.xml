@@ -46,6 +46,7 @@
     </TextView>
 
     <EditText
+        android:id="@+id/id_signup"
         style="@style/edit_style"
         android:background="@drawable/signup_edge">
 
@@ -110,6 +111,7 @@
         </TextView>
 
         <EditText
+            android:id="@+id/nick_signup"
             style="@style/edit_style"
             android:background="@drawable/signup_edge">
 
