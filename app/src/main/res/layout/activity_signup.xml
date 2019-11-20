@@ -62,60 +62,13 @@
         </TextView>
 
         <EditText
-            android:id="@+id/pw_first"
+            android:id="@+id/pw_signup"
             style="@style/edit_style"
             android:password="true"
             android:background="@drawable/signup_edge">
 
         </EditText>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal">
-        <TextView
-            style="@style/text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="비밀번호확인"
-            android:layout_marginLeft="60dp"
-            android:fontFamily="@font/bm">
-
-        </TextView>
-
-            <ImageView
-                android:id="@+id/pw_Image"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center">
-
-            </ImageView>
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/pw_second"
-            style="@style/edit_style"
-            android:layout_gravity="center"
-            android:password="true"
-            android:background="@drawable/signup_edge">
-
-        </EditText>
-
-        <TextView
-            style="@style/text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="닉네임"
-            android:fontFamily="@font/bm">
-
-        </TextView>
-
-        <EditText
-            android:id="@+id/nick_signup"
-            style="@style/edit_style"
-            android:background="@drawable/signup_edge">
-
-        </EditText>
 
         <Button
             android:id="@+id/btn_signup_complete"
@@ -130,6 +83,14 @@
             android:fontFamily="@font/bm">
 
         </Button>
+
+        <TextView
+            android:layout_margin="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/textviewMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

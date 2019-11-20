@@ -1,11 +1,14 @@
 package com.example.tikitaka;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -14,65 +17,85 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SignupActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btn_signup_complete;
-    EditText id_signup,pw_first, pw_second,nick_signup;
-    ImageView pw_Image;
-
-
+    EditText id_signup,pw_signup;
+    ProgressDialog progressDialog;
+    FirebaseAuth firebaseAuth;
+    TextView textviewMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        //initializing firebase auth object
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser() != null){
+            //이미 로그인 되었다면 이 액티비티를 종료함
+            finish();
+            //그리고 Main 액티비티를 연다.
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+
         id_signup=findViewById(R.id.id_signup);
-        nick_signup=findViewById(R.id.nick_signup);
-
+        pw_signup = (EditText)findViewById(R.id.pw_signup);
         btn_signup_complete = findViewById(R.id.btn_signup_complete);
-        btn_signup_complete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick (View v){
-                if (pw_first.getText().toString() != null) {
-                    if (pw_first.getText().toString().equals(pw_second.getText().toString())) {
-                        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(SignupActivity.this, "가입 되었습니다.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SignupActivity.this, "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
+        progressDialog=new ProgressDialog(this);
+        textviewMessage=findViewById(R.id.textviewMessage);
+
+        btn_signup_complete.setOnClickListener(this);
+
+    }
+    //Firebse creating a new user
+    private void registerUser(){
+        //사용자가 입력하는 email, password를 가져온다.
+        String email = id_signup.getText().toString().trim();
+        String password = pw_signup.getText().toString().trim();
+        //email과 password가 비었는지 아닌지를 체크 한다.
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+        }
+
+        //email과 password가 제대로 입력되어 있다면 계속 진행된다.
+        progressDialog.setMessage("등록중입니다. 기다려 주세요...");
+        progressDialog.show();
+
+        //creating a new user
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } else {
+                            //에러발생시
+                            textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");
+                            Toast.makeText(SignupActivity.this, "등록 에러!", Toast.LENGTH_SHORT).show();
+                        }
+                        progressDialog.dismiss();
                     }
-                }
-            }
+                });
 
-        });
+    }
 
-        pw_first = (EditText)findViewById(R.id.pw_first);
-        pw_second = (EditText)findViewById(R.id.pw_second);
-        pw_Image = (ImageView)findViewById(R.id.pw_Image);
-
-        pw_second.addTextChangedListener(new TextWatcher() {
-
-            @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+    //button click event
+    @Override
+    public void onClick(View view){
+        if(view==btn_signup_complete){
+            registerUser();
         }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            if(pw_first.getText().toString().equals(pw_second.getText().toString())) {
-                pw_Image.setImageResource(R.drawable.check_img);
-            } else {
-
-                pw_Image.setImageResource(R.drawable.red_cross);
-            }
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable)  {
-
-        }
-    });
-
     }
 }
