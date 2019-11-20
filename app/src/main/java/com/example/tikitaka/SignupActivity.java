@@ -38,12 +38,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         //initializing firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
+        /*
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
             //그리고 Main 액티비티를 연다.
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        }
+        }*/
 
         id_signup=findViewById(R.id.id_signup);
         pw_signup = (EditText)findViewById(R.id.pw_signup);
@@ -78,8 +79,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            Toast.makeText(SignupActivity.this, "가입되었습니다.", Toast.LENGTH_SHORT).show();
                             finish();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         } else {
                             //에러발생시
                             textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");

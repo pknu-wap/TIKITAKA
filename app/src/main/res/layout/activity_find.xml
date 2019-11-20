@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="회원가입"
+            android:text="비밀번호 찾기"
             android:textSize="35dp"
             android:textColor="#10a8c8"
             android:gravity="center"
@@ -46,38 +46,23 @@
     </TextView>
 
     <EditText
-        android:id="@+id/id_signup"
+        android:id="@+id/id_find"
         style="@style/edit_style"
         android:background="@drawable/signup_edge">
 
     </EditText>
 
-        <TextView
-            style="@style/text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="비밀번호"
-            android:fontFamily="@font/bm">
 
-        </TextView>
-
-        <EditText
-            android:id="@+id/pw_signup"
-            style="@style/edit_style"
-            android:password="true"
-            android:background="@drawable/signup_edge">
-
-        </EditText>
 
 
         <Button
-            android:id="@+id/btn_signup_complete"
+            android:id="@+id/btn_find_send"
             android:layout_width="300dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:background="@drawable/btn_background_blue"
-            android:text="회원가입완료"
+            android:text="이메일 보내기"
             android:textSize="20dp"
             android:textColor="#FFFFFF"
             android:fontFamily="@font/bm">

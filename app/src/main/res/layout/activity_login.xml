@@ -28,21 +28,23 @@
         android:layout_weight="5">
 
     <EditText
+        android:id="@+id/id_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="아이디"
+        android:hint="이메일"
         android:fontFamily="@font/bm">
 
     </EditText>
 
     <EditText
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:hint="비밀번호"
-    android:fontFamily="@font/bm"
-    android:layout_marginTop="9dp"
+        android:id="@+id/pw_login"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="비밀번호"
+        android:fontFamily="@font/bm"
+        android:layout_marginTop="9dp"
         android:password="true">
 
     </EditText>
@@ -61,18 +63,36 @@
 
     </Button>
 
-    <TextView
-        android:id="@+id/btn_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="티키타카가 처음이신가요?"
-        android:textSize="15dp"
-        android:textColor="#777777"
-        android:gravity="center"
-        android:fontFamily="@font/bm">
+        <TextView
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="티키타카가 처음이신가요?"
+            android:textSize="15dp"
+            android:textColor="#777777"
+            android:gravity="center"
+            android:fontFamily="@font/bm"/>
 
-    </TextView>
+        <TextView
+            android:id="@+id/btn_find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="비밀번호를 잊어버리셨나요?"
+            android:textSize="15dp"
+            android:textColor="#777777"
+            android:gravity="center"
+            android:fontFamily="@font/bm"/>
+
+        <TextView
+            android:layout_margin="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/textviewMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 
