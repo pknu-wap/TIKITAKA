@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tikitaka">
+    package="com.example.tikitaka"
+    >
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,9 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Content_in_list"></activity>
         <activity android:name=".FindActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".WritingActivity"></activity>
     </application>
 
 </manifest>
