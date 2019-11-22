@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                                                      int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.listlayout, parent, false);
+                .inflate(R.layout.activity_list_layout, parent, false);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;

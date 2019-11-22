@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Content_in_list extends AppCompatActivity {
+public class ContentActivity extends AppCompatActivity {
 
     private TextView TextView_content_title;
     private TextView TextView_content_date;
@@ -18,7 +18,7 @@ public class Content_in_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_in_list);
+        setContentView(R.layout.activity_content);
 
         TextView_content_title=findViewById(R.id.TextView_content_title);
         TextView_content_date=findViewById(R.id.TextView_content_date);

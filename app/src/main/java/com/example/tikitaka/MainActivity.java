@@ -8,14 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.my_recycler_view);
         // use this setting to improve performance if you know that changes
-        // in Content_in_list do not change the layout size of the RecyclerView
+        // in ContentActivity do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
@@ -68,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int list_position=(int)v.getTag();
-                Intent intent= new Intent(MainActivity.this, Content_in_list.class);
+                Intent intent= new Intent(MainActivity.this, ContentActivity.class);
                 intent.putExtra("title",title[list_position]);
                 intent.putExtra("date",date[list_position]);
                 intent.putExtra("writer",writer[list_position]);
