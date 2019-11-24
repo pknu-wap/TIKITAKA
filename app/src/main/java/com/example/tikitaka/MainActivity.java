@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Date time = new Date();
         String current_time=format.format(time);
 
-        Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar) ;
+        Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar_main) ;
         setSupportActionBar(tb) ;
 
         button_write=findViewById(R.id.button_write);

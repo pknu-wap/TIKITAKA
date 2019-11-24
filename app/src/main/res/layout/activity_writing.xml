@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="글쓰기 페이지"
-        android:textSize="30sp"/>
+        app:titleTextColor="#ffffff"
+        android:background="@color/colorAccent"
+        android:id="@+id/app_toolbar_writing"
+        android:theme="@style/ToolbarTheme"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="논제"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/bm"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/et_title_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="본문"
+                android:fontFamily="@font/bm"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/et_content_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="textMultiLine"
+                android:layout_margin="10dp"
+                android:gravity="top"
+                android:lines="10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="찬성 측 주장"
+                android:fontFamily="@font/bm"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/et_affirmative_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:layout_margin="10dp"
+                android:lines="3"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반대 측 주장"
+                android:fontFamily="@font/bm"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/et_opposition_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="textMultiLine"
+                android:layout_margin="10dp"
+                android:gravity="top"
+                android:lines="3"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="참고자료"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/bm"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/et_references_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_margin="10dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="2"/>
+
+            <Button
+                android:id="@+id/btn_done_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="작성하기"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:fontFamily="@font/bm"
+                android:background="@drawable/btn_background_blue"
+                android:layout_margin="10dp"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

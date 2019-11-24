@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         textivewDelete = (TextView) findViewById(R.id.textviewDelete);
 
-        Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar2) ;
+        Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar_profile) ;
         setSupportActionBar(tb) ;
 
         //initializing firebase authentication object
