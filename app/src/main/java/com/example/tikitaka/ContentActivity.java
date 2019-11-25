@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ContentActivity extends AppCompatActivity {
 
@@ -22,21 +23,23 @@ public class ContentActivity extends AppCompatActivity {
 
         TextView_content_title=findViewById(R.id.TextView_content_title);
         TextView_content_date=findViewById(R.id.TextView_content_date);
-        TextView_content_writer=findViewById(R.id.TextView_content_writer);
+        Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar_writing) ;
+        setSupportActionBar(tb) ;
+
 
         Intent profile_intent = getIntent();
         Bundle profile_bundle = profile_intent.getExtras();
 
         title = profile_bundle.getString("title");
         date = profile_bundle.getString("date");
-        writer = profile_bundle.getString("writer");
+
 
         System.out.println(title);
         System.out.println(date);
-        System.out.println(writer);
+
 
         TextView_content_title.setText(title);
         TextView_content_date.setText(date);
-        TextView_content_writer.setText(writer);
+
     }
 }

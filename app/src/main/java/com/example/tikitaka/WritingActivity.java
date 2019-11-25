@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +16,6 @@ public class WritingActivity extends AppCompatActivity {
     private EditText et_opposition_writing;
     private EditText et_references_writing;
     private Button btn_done_writing;
-    private Button btn_cancel_writing;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,6 +35,7 @@ public class WritingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(WritingActivity.this, "등록 완료", Toast.LENGTH_SHORT).show();
             }
         });
 
