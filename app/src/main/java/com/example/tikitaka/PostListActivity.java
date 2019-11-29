@@ -43,8 +43,6 @@ public class PostListActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager mManager;
-
-    private ArrayList<recyclerData> myDataset=new ArrayList<>();
     private Button button_write;
 
     @Override
