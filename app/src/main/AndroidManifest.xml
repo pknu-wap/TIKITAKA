@@ -19,12 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
         <activity android:name=".ContentActivity"></activity>
         <activity android:name=".FindActivity"></activity>
         <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".NewsActivity"></activity>
         <activity android:name=".WritingActivity"></activity>
+        <activity android:name=".PostListActivity"></activity>
     </application>
 
 </manifest>

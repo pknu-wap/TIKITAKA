@@ -16,5 +16,6 @@ public class NewsActivity extends AppCompatActivity {
 
         Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar_news) ;
         setSupportActionBar(tb) ;
+
     }
 }
