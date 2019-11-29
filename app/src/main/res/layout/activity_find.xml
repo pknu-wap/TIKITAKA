@@ -48,6 +48,8 @@
     <EditText
         android:id="@+id/id_find"
         style="@style/edit_style"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
         android:background="@drawable/signup_edge">
 
     </EditText>
