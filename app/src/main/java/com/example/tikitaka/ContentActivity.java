@@ -3,15 +3,18 @@ package com.example.tikitaka;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,14 +24,19 @@ import com.example.tikitaka.models.Comment;
 import com.example.tikitaka.models.Post;
 import com.example.tikitaka.models.User;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ContentActivity extends BaseActivity implements View.OnClickListener {
@@ -46,6 +54,10 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
     private TextView mAuthorView;
     private TextView mTitleView;
     private TextView mBodyView;
+    private TextView mDateView;
+    private TextView mAffirmativeView;
+    private TextView mOppositionView;
+    private TextView mReferenceView;
     private EditText mCommentField;
     private Button mCommentButton;
     private RecyclerView mCommentsRecycler;
@@ -60,6 +72,7 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
         // Get post key from intent
         mPostKey = getIntent().getStringExtra(EXTRA_POST_KEY);
+
         if (mPostKey == null) {
             throw new IllegalArgumentException("Must pass EXTRA_POST_KEY");
         }
@@ -74,7 +87,12 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
         mAuthorView = findViewById(R.id.postAuthor);
         mTitleView = findViewById(R.id.postTitle);
         mBodyView = findViewById(R.id.postBody);
+        mDateView = findViewById(R.id.postDate);
+        mAffirmativeView = findViewById(R.id.postAffirmative);
+        mOppositionView = findViewById(R.id.postOpposition);
+        mReferenceView = findViewById(R.id.postReference);
         mCommentField = findViewById(R.id.fieldCommentText);
+
         mCommentButton = findViewById(R.id.buttonPostComment);
         mCommentsRecycler = findViewById(R.id.recyclerPostComments);
 
@@ -97,6 +115,10 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
                 mAuthorView.setText(post.author);
                 mTitleView.setText(post.title);
                 mBodyView.setText(post.body);
+                mDateView.setText(post.date);
+                mAffirmativeView.setText(post.affirmative);
+                mOppositionView.setText(post.opposition);
+                mReferenceView.setText(post.reference);
                 // [END_EXCLUDE]
             }
 
@@ -152,9 +174,21 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
                         User user = dataSnapshot.getValue(User.class);
                         String authorName = user.username;
 
+                        // Get now date
+                        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Date time = new Date();
+                        String date=format.format(time);
+
                         // Create new comment object
                         String commentText = mCommentField.getText().toString();
-                        Comment comment = new Comment(uid, authorName, commentText);
+
+                        // Title is required
+                        if (TextUtils.isEmpty(commentText)) {
+                            mCommentField.setError("Required");
+                            return;
+                        }
+
+                        Comment comment = new Comment(uid, authorName, commentText, date);
 
                         // Push the comment, it will appear in the list
                         mCommentsReference.push().setValue(comment);
@@ -174,13 +208,16 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
     public TextView authorView;
     public TextView bodyView;
+    public TextView commentView;
 
     public CommentViewHolder(View itemView) {
         super(itemView);
 
         authorView = itemView.findViewById(R.id.commentAuthor);
         bodyView = itemView.findViewById(R.id.commentBody);
+        commentView = itemView.findViewById(R.id.commentDate);
     }
+
 }
 
     private static class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
@@ -295,12 +332,16 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
 
         //뷰홀더
         @Override
-        public void onBindViewHolder(CommentViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
             Comment comment = mComments.get(position);
             holder.authorView.setText(comment.author);
             holder.bodyView.setText(comment.text);
+            holder.commentView.setText(comment.date);
+
         }
 
+
+        // [END post_stars_transaction]
         @Override
         public int getItemCount() {
             return mComments.size();
@@ -313,4 +354,6 @@ public class ContentActivity extends BaseActivity implements View.OnClickListene
         }
 
     }
+
+
 }

@@ -57,45 +57,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         btn_signup.setOnClickListener(this);
         btn_find.setOnClickListener(this);
 
-        //progressDialog=new ProgressDialog(this);
-
-    }
-/*
-    //firebase userLogin method
-    private void userLogin(){
-        String email = id_login.getText().toString().trim();
-        String password = pw_login.getText().toString().trim();
-
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this, "password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
-            return;
+        // Check auth on Activity start
+        if (firebaseAuth.getCurrentUser() != null) {
+            onAuthSuccess(firebaseAuth.getCurrentUser());
         }
 
-        progressDialog.setMessage("로그인중입니다. 잠시 기다려 주세요...");
-        progressDialog.show();
-
-        //logging in the user
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if(task.isSuccessful()) {
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        } else {
-                            Toast.makeText(getApplicationContext(), "로그인 실패!", Toast.LENGTH_LONG).show();
-                            textviewMessage.setText("로그인 실패 유형\n - password가 맞지 않습니다.\n -서버에러");
-                        }
-                    }
-                });
     }
 
- */
     private void signIn() {
         Log.d(TAG, "signIn");
         if (!validateForm()) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -12,8 +13,10 @@
         android:id="@+id/app_toolbar_writing"
         android:theme="@style/ToolbarTheme"/>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="16dp"
@@ -28,41 +31,102 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true" />
 
-        <include
-            android:id="@+id/postTextLayout"
-            layout="@layout/include_post_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/postAOPLayout"
             android:layout_below="@+id/postAuthorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="찬성 50%"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:background="#84fb84"
+                android:maxLines="1"
+                android:layout_weight="50"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반대 50%"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:background="#ff6666"
+                android:maxLines="1"
+                android:layout_weight="50"/>
+        </LinearLayout>
+        <ScrollView
+            android:id="@+id/scroll_post"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@+id/postAOPLayout"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            >
+            <include
+                android:id="@+id/postTextLayout"
+                layout="@layout/include_post_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </ScrollView>
+
 
         <LinearLayout
             android:id="@+id/commentForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/postTextLayout"
-            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/scroll_post"
+            android:layout_marginTop="10dp"
             android:weightSum="1.0">
 
-            <EditText
-                android:id="@+id/fieldCommentText"
-                android:layout_width="0dp"
-                android:layout_weight="0.8"
+            <RadioGroup
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:hint="댓글 쓰기"/>
+                android:orientation="horizontal"
+                >
 
-            <Button
-                android:id="@+id/buttonPostComment"
-                android:fontFamily="@font/bm"
-                android:background="@drawable/btn_background_blue"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="찬성" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반대" />
+            </RadioGroup>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Post"/>
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+                <EditText
+                    android:id="@+id/fieldCommentText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:hint="댓글 쓰기"
+                    android:maxLines="1" />
+
+                <Button
+                    android:id="@+id/buttonPostComment"
+                    android:fontFamily="@font/bm"
+                    android:background="@drawable/btn_background_blue"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="Post"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -74,5 +138,5 @@
             tools:listitem="@layout/item_comment" />
 
     </RelativeLayout>
-
+    </ScrollView>
 </LinearLayout>
