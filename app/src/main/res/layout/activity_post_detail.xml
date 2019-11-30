@@ -59,30 +59,23 @@
                 android:maxLines="1"
                 android:layout_weight="50"/>
         </LinearLayout>
-        <ScrollView
-            android:id="@+id/scroll_post"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+        <include
+            android:id="@+id/postTextLayout"
+            layout="@layout/include_post_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/postAOPLayout"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            >
-            <include
-                android:id="@+id/postTextLayout"
-                layout="@layout/include_post_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-        </ScrollView>
-
+            />
 
         <LinearLayout
             android:id="@+id/commentForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@+id/scroll_post"
+            android:layout_below="@+id/postTextLayout"
             android:layout_marginTop="10dp"
             android:weightSum="1.0">
 
