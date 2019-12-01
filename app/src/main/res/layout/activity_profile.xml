@@ -24,8 +24,9 @@
         <ImageView
             android:id="@+id/image_profile"
             android:layout_marginTop="150dp"
-            android:src="@drawable/ikmyeong"
+            android:src="@drawable/ic_action_account_circle_40"
             android:layout_gravity="center_horizontal"
+            android:background="#ffffff"
             android:layout_width="100dp"
             android:layout_height="100dp" />
 

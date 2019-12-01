@@ -32,39 +32,12 @@
             android:layout_alignParentLeft="true" />
 
 
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:id="@+id/postAOPLayout"
-            android:layout_below="@+id/postAuthorLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="100">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="찬성 50%"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:background="#84fb84"
-                android:maxLines="1"
-                android:layout_weight="50"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="반대 50%"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:background="#ff6666"
-                android:maxLines="1"
-                android:layout_weight="50"/>
-        </LinearLayout>
         <include
             android:id="@+id/postTextLayout"
             layout="@layout/include_post_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/postAOPLayout"
+            android:layout_below="@+id/postAuthorLayout"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
@@ -80,6 +53,7 @@
             android:weightSum="1.0">
 
             <RadioGroup
+                android:id="@+id/radiogroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -96,6 +70,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="반대" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="중립" />
             </RadioGroup>
             <LinearLayout
                 android:layout_width="match_parent"

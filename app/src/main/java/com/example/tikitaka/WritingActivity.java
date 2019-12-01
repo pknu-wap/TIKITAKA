@@ -155,6 +155,9 @@ public class WritingActivity extends BaseActivity {
     private void setEditingEnabled(boolean enabled) {
         et_title_writing.setEnabled(enabled);
         et_content_writing.setEnabled(enabled);
+        et_affirmative_writing.setEnabled(enabled);
+        et_opposition_writing.setEnabled(enabled);
+        et_references_writing.setEnabled(enabled);
         if (enabled) {
             btn_done_writing.setClickable(true);
         } else {
@@ -185,15 +188,13 @@ public class WritingActivity extends BaseActivity {
 
         // AlertDialog 빌더를 이용해 종료시 발생시킬 창을 띄운다
         AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
-        alBuilder.setMessage("글쓰기를 취소하시겠습니까?");
+        alBuilder.setMessage("글쓰기를 취소하시겠습니까?\n작성중이던 글은 저장되지 않습니다.");
 
         // "예" 버튼을 누르면 실행되는 리스너
         alBuilder.setPositiveButton("예", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();// 현재 액티비티를 종료한다. (MainActivity에서 작동하기 때문에 애플리케이션을 종료한다.)
-                Intent intent= new Intent(WritingActivity.this, PostListActivity.class);
-                startActivity(intent);
             }
         });
         // "아니오" 버튼을 누르면 실행되는 리스너

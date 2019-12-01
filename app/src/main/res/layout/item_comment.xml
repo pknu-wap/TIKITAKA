@@ -25,6 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
+            <TextView
+                android:id="@+id/commentOpinion"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/starLayout"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                tools:text="Opinion"/>
 
             <TextView
                 android:id="@+id/commentAuthor"
@@ -32,6 +42,8 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 tools:text="John Doe" />
+
+
 
             <LinearLayout
                 android:id="@+id/starLayout"
@@ -53,7 +65,7 @@
                     android:src="@drawable/ic_toggle_star_outline_24" />
 
                 <TextView
-                    android:id="@+id/postNumStars"
+                    android:id="@+id/postNumStars_comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -69,6 +81,7 @@
             android:layout_alignParentRight="true"
             android:textSize="10sp"
             tools:text="date" />
+
         <TextView
             android:id="@+id/commentBody"
             style="@style/TextAppearance.AppCompat.Small"
