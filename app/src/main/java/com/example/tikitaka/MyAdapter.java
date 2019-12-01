@@ -1,6 +1,7 @@
 package com.example.tikitaka;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private List<NewsData> mDataset;
+    static Context context;
+    private static List<NewsData> mDataset;
 
 
     // Provide a reference to the views for each data item
@@ -31,6 +33,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(v);
             TextView_Title = v.findViewById(R.id.TextView_Title);
             ImageView_Title = v.findViewById(R.id.ImageView_Title);
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int pos = getAdapterPosition();
+                        NewsData item = mDataset.get(pos);
+                        if(pos != RecyclerView.NO_POSITION) {
+
+                            //Intent intent = new Intent(context,NewsUrl.class);
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getUrl()));
+                            context.startActivity(intent);
+                        }
+                    }
+                });
+
         }
     }
 
@@ -38,6 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyAdapter(List<NewsData> myDataset, Context context) {
         //{"1","2"}
         mDataset = myDataset;
+        this.context = context;
         Fresco.initialize(context);
     }
 
@@ -64,6 +81,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Uri uri = Uri.parse(news.getUrlToImage());
 
         holder.ImageView_Title.setImageURI(uri);
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
