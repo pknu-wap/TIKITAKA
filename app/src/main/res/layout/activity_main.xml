@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="글쓰기"
-        android:fontFamily="@font/bm"
+        android:fontFamily="@font/ns_b"
         android:background="@drawable/btn_background_blue"
         android:textSize="25sp"
         android:textColor="#ffffff"

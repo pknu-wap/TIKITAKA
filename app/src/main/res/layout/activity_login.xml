@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:text="티키타카"
+        android:text="아니 근데 진짜"
         android:textSize="50dp"
         android:textColor="#10A8C8"
-        android:fontFamily="@font/bm"
+        android:fontFamily="@font/ns_b"
         android:gravity="center">
 
     </TextView>
@@ -35,7 +35,7 @@
         android:hint="이메일"
         android:singleLine="true"
         android:inputType="textEmailAddress"
-        android:fontFamily="@font/bm">
+        android:fontFamily="@font/ns_r">
 
     </EditText>
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:hint="비밀번호"
-        android:fontFamily="@font/bm"
+        android:fontFamily="@font/ns_r"
         android:layout_marginTop="9dp"
         android:singleLine="true"
         android:password="true"
@@ -61,7 +61,7 @@
         android:layout_marginTop="20dp"
         android:text="로그인"
         android:textSize="20dp"
-        android:fontFamily="@font/bm"
+        android:fontFamily="@font/ns_b"
         android:textColor="#FFFFFF"
         android:background="@drawable/btn_background_blue">
 
@@ -76,7 +76,7 @@
             android:textSize="15dp"
             android:textColor="#777777"
             android:gravity="center"
-            android:fontFamily="@font/bm"/>
+            android:fontFamily="@font/ns_r"/>
 
         <TextView
             android:id="@+id/btn_find"
@@ -87,7 +87,7 @@
             android:textSize="15dp"
             android:textColor="#777777"
             android:gravity="center"
-            android:fontFamily="@font/bm"/>
+            android:fontFamily="@font/ns_r"/>
 
         <TextView
             android:layout_margin="15dp"

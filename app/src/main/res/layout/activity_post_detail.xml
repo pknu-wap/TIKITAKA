@@ -88,11 +88,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
                     android:hint="댓글 쓰기"
+                    android:fontFamily="@font/ns_r"
                     android:maxLines="1" />
 
                 <Button
                     android:id="@+id/buttonPostComment"
-                    android:fontFamily="@font/bm"
+                    android:fontFamily="@font/ns_b"
                     android:background="@drawable/btn_background_blue"
                     android:layout_width="0dp"
                     android:layout_weight="0.2"

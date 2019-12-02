@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,6 +35,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonLogout;
     private TextView textivewDelete;
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item ){
+        switch(item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +56,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         textivewDelete = (TextView) findViewById(R.id.textviewDelete);
 
         Toolbar tb = (Toolbar) findViewById(R.id.app_toolbar_profile) ;
-        setSupportActionBar(tb) ;
+        setSupportActionBar(tb);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_left_arrow);
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
