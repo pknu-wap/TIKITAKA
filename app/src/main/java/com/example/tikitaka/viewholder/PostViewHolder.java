@@ -14,8 +14,10 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public TextView titleView;
     public TextView authorView;
-    public ImageView starView;
-    public TextView numStarsView;
+    public ImageView goodView;
+    public TextView numGoodView;
+    public ImageView badView;
+    public TextView numbadView;
     public TextView bodyView;
     public TextView dateView;
     public TextView affirmativeView;
@@ -27,8 +29,10 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         titleView = itemView.findViewById(R.id.postTitle);
         authorView = itemView.findViewById(R.id.postAuthor);
-        starView = itemView.findViewById(R.id.star);
-        numStarsView = itemView.findViewById(R.id.postNumStars);
+        goodView = itemView.findViewById(R.id.Good);
+        numGoodView = itemView.findViewById(R.id.postNumGood);
+        badView = itemView.findViewById(R.id.Bad);
+        numbadView = itemView.findViewById(R.id.postNumBad);
         bodyView = itemView.findViewById(R.id.postBody);
         dateView = itemView.findViewById(R.id.postDate);
         affirmativeView = itemView.findViewById(R.id.postAffirmative);
@@ -36,16 +40,18 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         referenceView = itemView.findViewById(R.id.postReference);
     }
 
-    public void bindToPost(Post post, View.OnClickListener starClickListener) {
+    public void bindToPost(Post post, View.OnClickListener GoodClickListener, View.OnClickListener BadClickListener) {
         titleView.setText(post.title);
         authorView.setText(post.author);
-        numStarsView.setText(String.valueOf(post.starCount));
+        numGoodView.setText(String.valueOf(post.goodCount));
+        numbadView.setText(String.valueOf(post.badCount));
         bodyView.setText(post.body);
         dateView.setText(post.date);
         affirmativeView.setText(post.affirmative);
         oppositionView.setText(post.opposition);
         referenceView.setText(post.reference);
 
-        starView.setOnClickListener(starClickListener);
+        goodView.setOnClickListener(GoodClickListener);
+        badView.setOnClickListener(BadClickListener);
     }
 }

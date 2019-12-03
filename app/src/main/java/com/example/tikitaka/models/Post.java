@@ -18,8 +18,10 @@ public class Post {
     public String opposition;
     public String reference;
     public String date;
-    public int starCount = 0;
-    public Map<String, Boolean> stars = new HashMap<>();
+    public int goodCount = 0;
+    public Map<String, Boolean> good = new HashMap<>();
+    public int badCount = 0;
+    public Map<String, Boolean> bad = new HashMap<>();
 
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
@@ -44,12 +46,14 @@ public class Post {
         result.put("author", author);
         result.put("title", title);
         result.put("body", body);
-        result.put("starCount", starCount);
+        result.put("goodCount", goodCount);
+        result.put("badCount",badCount);
         result.put("affirmative", affirmative);
         result.put("opposition",opposition);
         result.put("reference",reference);
         result.put("date",date);
-        result.put("stars", stars);
+        result.put("good", good);
+        result.put("bad", bad);
 
 
         return result;

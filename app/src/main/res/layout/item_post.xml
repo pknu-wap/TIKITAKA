@@ -18,7 +18,34 @@
             android:layout_alignParentLeft="true" />
 
         <LinearLayout
-            android:id="@+id/starLayout"
+            android:id="@+id/GoodLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/postAuthorLayout"
+            android:layout_toLeftOf="@+id/BadLayout"
+            android:layout_alignTop="@+id/postAuthorLayout"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/Good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/outline_thumb_up_black_18dp" />
+
+            <TextView
+                android:id="@+id/postNumGood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="7" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/BadLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/postAuthorLayout"
@@ -28,16 +55,16 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/star"
+                android:id="@+id/Bad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"
                 android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_toggle_star_outline_24" />
+                android:src="@drawable/outline_thumb_down_black_18dp" />
 
             <TextView
-                android:id="@+id/postNumStars"
+                android:id="@+id/postNumBad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

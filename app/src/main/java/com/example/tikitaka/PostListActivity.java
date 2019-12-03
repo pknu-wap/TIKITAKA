@@ -95,10 +95,17 @@ public class PostListActivity extends AppCompatActivity {
                 });
 
                 // Determine if the current user has liked this post and set UI accordingly
-                if (model.stars.containsKey(getUid())) {
-                    holder.starView.setImageResource(R.drawable.ic_toggle_star_24);
+                if (model.good.containsKey(getUid())) {
+                    holder.goodView.setImageResource(R.drawable.baseline_thumb_up_black_18dp);
                 } else {
-                    holder.starView.setImageResource(R.drawable.ic_toggle_star_outline_24);
+                    holder.goodView.setImageResource(R.drawable.outline_thumb_up_black_18dp);
+                }
+
+                // Determine if the current user has liked this post and set UI accordingly
+                if (model.bad.containsKey(getUid())) {
+                    holder.badView.setImageResource(R.drawable.baseline_thumb_down_black_18dp);
+                } else {
+                    holder.badView.setImageResource(R.drawable.outline_thumb_down_black_18dp);
                 }
 
                 // Bind Post to ViewHolder, setting OnClickListener for the star button
@@ -110,8 +117,19 @@ public class PostListActivity extends AppCompatActivity {
                         DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(postRef.getKey());
 
                         // Run two transactions
-                        onStarClicked(globalPostRef);
-                        onStarClicked(userPostRef);
+                        onGoodClicked(globalPostRef);
+                        onGoodClicked(userPostRef);
+                    }
+                }, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Need to write to both places the post is stored
+                        DatabaseReference globalPostRef = mDatabase.child("posts").child(postRef.getKey());
+                        DatabaseReference userPostRef = mDatabase.child("user-posts").child(model.uid).child(postRef.getKey());
+
+                        // Run two transactions
+                        onBadClicked(globalPostRef);
+                        onBadClicked(userPostRef);
                     }
                 });
 
@@ -193,7 +211,7 @@ public class PostListActivity extends AppCompatActivity {
 
 
     // [START post_stars_transaction]
-    private void onStarClicked(DatabaseReference postRef) {
+    private void onGoodClicked(DatabaseReference postRef) {
         postRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
@@ -202,14 +220,50 @@ public class PostListActivity extends AppCompatActivity {
                     return Transaction.success(mutableData);
                 }
 
-                if (p.stars.containsKey(getUid())) {
+                if (p.good.containsKey(getUid())) {
                     // Unstar the post and remove self from stars
-                    p.starCount = p.starCount - 1;
-                    p.stars.remove(getUid());
+                    p.goodCount = p.goodCount - 1;
+                    p.good.remove(getUid());
                 } else {
                     // Star the post and add self to stars
-                    p.starCount = p.starCount + 1;
-                    p.stars.put(getUid(), true);
+                    p.goodCount = p.goodCount + 1;
+                    p.good.put(getUid(), true);
+                }
+
+                // Set value and report transaction success
+                mutableData.setValue(p);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                // Transaction completed
+                Log.d(TAG, "postTransaction:onComplete:" + databaseError);
+            }
+        });
+    }
+    // [END post_stars_transaction]
+
+
+    // [START post_stars_transaction]
+    private void onBadClicked(DatabaseReference postRef) {
+        postRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                Post p = mutableData.getValue(Post.class);
+                if (p == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (p.bad.containsKey(getUid())) {
+                    // Unstar the post and remove self from stars
+                    p.badCount = p.badCount - 1;
+                    p.bad.remove(getUid());
+                } else {
+                    // Star the post and add self to stars
+                    p.badCount = p.badCount + 1;
+                    p.bad.put(getUid(), true);
                 }
 
                 // Set value and report transaction success
