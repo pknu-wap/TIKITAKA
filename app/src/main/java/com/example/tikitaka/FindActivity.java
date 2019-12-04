@@ -73,6 +73,7 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
     //글쓰기 취소 팝업
     @Override
     public void onBackPressed() {
+        finish();
         Intent intent = new Intent(FindActivity.this, LoginActivity.class);
         startActivity(intent);
     }

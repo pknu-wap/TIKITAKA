@@ -154,7 +154,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         alBuilder.setPositiveButton("예", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                finish();
                 Intent intent = new Intent(SignupActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
