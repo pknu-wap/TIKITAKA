@@ -29,7 +29,7 @@
             android:textSize="15dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:background="#9010A8C8"
+            android:background="#90f84848"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:fontFamily="@font/ns_r">

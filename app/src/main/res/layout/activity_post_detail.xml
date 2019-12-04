@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1.0">
+
                 <EditText
                     android:id="@+id/fieldCommentText"
                     android:layout_width="0dp"

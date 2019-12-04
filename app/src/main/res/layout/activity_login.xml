@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:text="아니 근데 진짜"
+        android:text="토론토"
         android:textSize="50dp"
-        android:textColor="#10A8C8"
+        android:textColor="#f84848"
         android:fontFamily="@font/ns_b"
         android:gravity="center">
 
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="티키타카가 처음이신가요?"
+            android:text="토론토가 처음이신가요?"
             android:textSize="15dp"
             android:textColor="#777777"
             android:gravity="center"

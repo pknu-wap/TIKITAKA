@@ -30,7 +30,7 @@
             android:layout_height="50dp"
             android:text="비밀번호 찾기"
             android:textSize="35dp"
-            android:textColor="#10a8c8"
+            android:textColor="#f84848"
             android:gravity="center"
             android:fontFamily="@font/ns_b">
 
